@@ -54,8 +54,6 @@ margin-left:auto;
 background:#ff4fa0;
 }
 
-/* HIDDEN CHAT */
-
 .hidden{
 opacity:0;
 transform:translateY(20px);
@@ -64,7 +62,7 @@ transform:translateY(20px);
 .show{
 opacity:1;
 transform:translateY(0);
-transition:1s;
+transition:0.5s ease;
 }
 
 /* IMAGE */
@@ -138,6 +136,45 @@ transform:translateY(0);
 text-shadow:0 0 10px #ff4fa0, 0 0 20px #ff4fa0;
 }
 
+/* CINEMATIC END */
+
+#cinemaEnding{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+opacity:0;
+pointer-events:none;
+transition:2s;
+z-index:5000;
+}
+
+.cinema-text{
+color:white;
+font-size:28px;
+line-height:1.8;
+opacity:0;
+transform:scale(0.9);
+transition:2s;
+}
+
+#cinemaEnding.show{
+opacity:1;
+pointer-events:auto;
+}
+
+#cinemaEnding.show .cinema-text{
+opacity:1;
+transform:scale(1);
+text-shadow:0 0 10px #ff4fa0, 0 0 25px #ff4fa0;
+}
+
 </style>
 
 </head>
@@ -152,16 +189,12 @@ text-shadow:0 0 10px #ff4fa0, 0 0 20px #ff4fa0;
 
 <h1 class="title">A Story I Never Planned 💫</h1>
 
-<!-- STATUS -->
-
 <div style="text-align:center; font-size:14px; color:#aaa;">
 ● online <br>
 <span id="typingStatus">typing...</span>
 </div>
 
 <div class="section">
-
-<!-- STORY -->
 
 <div class="chat left hidden">It all started as just another workshop...</div>
 <div class="chat right hidden">5 days… just training students… nothing special.</div>
@@ -196,42 +229,29 @@ text-shadow:0 0 10px #ff4fa0, 0 0 20px #ff4fa0;
 <div class="chat left hidden">Show you the beach…</div>
 <div class="chat right hidden">And create the best memories 🌊</div>
 
-<!-- YOUR FEELING PART -->
-
 <div class="chat left hidden">Hey…</div>
 <div class="chat right hidden">I don’t usually say this… but you should know 😊</div>
 
-<div class="chat left hidden">Somewhere between chats and calls… you became important to me.</div>
-<div class="chat right hidden">Not complicated… just simple and peaceful 💙</div>
+<div class="chat left hidden">You became important to me.</div>
+<div class="chat right hidden">In a simple and peaceful way 💙</div>
 
-<div class="chat left hidden">I miss those long calls sometimes…</div>
-<div class="chat right hidden">Even our random chats mean a lot ✨</div>
+<div class="chat left hidden">I miss our long calls sometimes…</div>
+<div class="chat right hidden">Even small chats mean a lot ✨</div>
 
-<div class="chat left hidden">And yeah…</div>
-<div class="chat right hidden">I’m always here for you 😊</div>
+<div class="chat left hidden">I’m always here for you 😊</div>
 
-<div class="chat left hidden">You + Me = Best memories pending 😄🌊</div>
+<div class="chat right hidden">You + Me = Best memories pending 😄🌊</div>
 
-<div class="chat right hidden">Waiting to meet you soon… maybe at your college again ✨</div>
-
-<div class="chat left hidden">Let’s go out and make it real.</div>
-
-<div class="chat right hidden">I really like this bond 💙</div>
+<div class="chat left hidden">Waiting to meet you soon…</div>
+<div class="chat right hidden">Let’s make it real ✨</div>
 
 <div class="chat left hidden">Happy Birthday Darlinggggg 🎂💖</div>
-<div class="chat right hidden">(Yeah… only you 😄)</div>
-
-<div class="chat left hidden">And hey… I miss you 😊</div>
-
-<!-- BUTTON -->
 
 <div style="text-align:center; margin-top:40px;">
 <button onclick="showSecret()">😊 Click this if you're smiling</button>
 </div>
 
 </div>
-
-<!-- POPUP -->
 
 <div id="secretBox">
 <div class="popup-content">
@@ -240,8 +260,6 @@ text-shadow:0 0 10px #ff4fa0, 0 0 20px #ff4fa0;
 <button onclick="closeSecret()">Close</button>
 </div>
 </div>
-
-<!-- FINAL MESSAGE -->
 
 <div id="finalMessage" style="
 padding:120px 20px;
@@ -252,10 +270,20 @@ transform:translateY(40px);
 transition:2s;
 color:#ff9ad5;
 ">
-
-Some people just become special…
+Some people just become special…  
 without trying. 💙
+</div>
 
+<div id="cinemaEnding">
+<div class="cinema-text">
+<p>Some stories start unexpectedly…</p>
+<p>and somehow become important.</p>
+<br>
+<p>Ours is one of them.</p>
+<br>
+<p>Let’s not rush it…</p>
+<p>let’s just enjoy it. 💙</p>
+</div>
 </div>
 
 <script>
@@ -263,6 +291,7 @@ without trying. 💙
 /* MUSIC */
 
 const music=document.getElementById("bgMusic");
+
 document.body.addEventListener("click",()=>{
 music.play();
 },{once:true});
@@ -317,7 +346,10 @@ setTimeout(()=>{
 chats[i].classList.add("show");
 document.getElementById("typingStatus").innerText="online";
 i++;
-setTimeout(showNext,1200);
+
+let delay=Math.random()*1200+600;
+setTimeout(showNext,delay);
+
 },1000);
 
 }
@@ -341,6 +373,31 @@ const msg=document.getElementById("finalMessage");
 if(msg.getBoundingClientRect().top < window.innerHeight-100){
 msg.classList.add("show");
 }
+});
+
+/* CINEMATIC END + MUSIC FADE */
+
+window.addEventListener("scroll",()=>{
+
+const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+
+if(bottom){
+
+document.getElementById("cinemaEnding").classList.add("show");
+
+/* MUSIC FADE OUT */
+
+let fade = setInterval(()=>{
+if(music.volume > 0.05){
+music.volume -= 0.05;
+}else{
+music.volume = 0;
+clearInterval(fade);
+}
+},200);
+
+}
+
 });
 
 </script>
