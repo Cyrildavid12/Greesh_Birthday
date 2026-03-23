@@ -9,18 +9,24 @@
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:linear-gradient(to bottom,#1a1a2e,#16213e);
+background:url("photo8.jpg") center/cover fixed;
 color:white;
 overflow-x:hidden;
 }
 
-canvas{
+/* OVERLAY */
+body::before{
+content:"";
 position:fixed;
 top:0;
 left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
 z-index:-1;
 }
 
+/* TITLE */
 .title{
 text-align:center;
 font-size:32px;
@@ -44,11 +50,7 @@ margin:15px 0;
 max-width:80%;
 }
 
-.left{
-margin-right:auto;
-background:#2a2a5a;
-}
-
+.left{margin-right:auto;}
 .right{
 margin-left:auto;
 background:#ff4fa0;
@@ -71,26 +73,7 @@ transition:0.5s ease;
 width:100%;
 border-radius:20px;
 margin:20px 0;
-opacity:0;
-transform:scale(0.9);
-animation:fadeZoom 2s forwards;
-}
-
-@keyframes fadeZoom{
-to{opacity:1;transform:scale(1);}
-}
-
-/* HEART */
-
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:floatUp 6s linear infinite;
-}
-
-@keyframes floatUp{
-to{transform:translateY(-100vh);opacity:0;}
+object-fit:cover;
 }
 
 /* BUTTON */
@@ -102,38 +85,21 @@ border-radius:10px;
 background:#ff4fa0;
 color:white;
 cursor:pointer;
+margin:10px;
 }
 
-/* POPUP */
+/* FINAL QUESTION */
 
-#secretBox{
+#questionBox{
 display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-
-.popup-content{
-background:white;
-color:black;
-padding:25px;
-border-radius:15px;
-max-width:300px;
 text-align:center;
+margin-top:80px;
 }
 
-/* FINAL MESSAGE */
-
-#finalMessage.show{
-opacity:1;
-transform:translateY(0);
-text-shadow:0 0 10px #ff4fa0, 0 0 20px #ff4fa0;
+#answerText{
+margin-top:20px;
+font-size:18px;
+color:#ffd6f0;
 }
 
 /* CINEMATIC END */
@@ -181,10 +147,8 @@ text-shadow:0 0 10px #ff4fa0, 0 0 25px #ff4fa0;
 
 <body>
 
-<canvas id="stars"></canvas>
-
 <audio id="bgMusic">
-<source src="song1.mp3" type="audio/mpeg">
+<source src="audio.mp3" type="audio/mpeg">
 </audio>
 
 <h1 class="title">A Story I Never Planned 💫</h1>
@@ -197,82 +161,72 @@ text-shadow:0 0 10px #ff4fa0, 0 0 25px #ff4fa0;
 <div class="section">
 
 <div class="chat left hidden">It all started as just another workshop...</div>
-<div class="chat right hidden">5 days… just training students… nothing special.</div>
-<div class="chat left hidden">And then… on the last day… we spoke a little.</div>
+<div class="chat right hidden">5 days… nothing special.</div>
+<div class="chat left hidden">Then we spoke… just a little.</div>
 
 <img src="photo1.jpg" class="story-img">
 
-<div class="chat right hidden">I didn’t think much about it that time.</div>
-<div class="chat left hidden">But that night… something unexpected happened…</div>
-<div class="chat right hidden">You found me… and sent me a request 💙</div>
-
-<img src="photo2.jpg" class="story-img">
-
-<div class="chat left hidden">From there… it slowly became daily chats…</div>
-<div class="chat right hidden">Then calls…</div>
-<div class="chat left hidden">Then… you became a part of my everyday.</div>
+<div class="chat right hidden">And that night… you sent me a request 💙</div>
 
 <img src="photo3.jpg" class="story-img">
 
-<div class="chat right hidden">I even brought bangles from Hyderabad…</div>
-<div class="chat left hidden">And those dresses… you still don’t know it was me 😄</div>
+<div class="chat left hidden">Then chats… calls…</div>
+<div class="chat right hidden">You became part of my day.</div>
 
-<div class="chat right hidden">Sometimes you reply late… sometimes dry…</div>
-<div class="chat left hidden">But still… I wait.</div>
+<div class="chat left hidden">I brought something from Hyderabad…</div>
 
-<div class="chat right hidden">Because talking to you just feels different.</div>
+<img src="photo2.jpg" class="story-img">
+
+<div class="chat right hidden">Yeah… those bangles were from me 😄</div>
+
+<div class="chat left hidden">And those dresses… surprise 😉</div>
 
 <img src="photo4.jpg" class="story-img">
 
+<div class="chat right hidden">Sometimes late replies… sometimes dry…</div>
+<div class="chat left hidden">Still… I wait.</div>
+
+<img src="photo5.jpg" class="story-img">
+
+<div class="chat right hidden">Because talking to you feels different.</div>
+
 <div class="chat left hidden">I promised something…</div>
-<div class="chat right hidden">That I’ll take you to my hometown…</div>
-<div class="chat left hidden">Show you the beach…</div>
-<div class="chat right hidden">And create the best memories 🌊</div>
 
-<div class="chat left hidden">Hey…</div>
-<div class="chat right hidden">I don’t usually say this… but you should know 😊</div>
+<img src="photo9.jpg" class="story-img">
 
-<div class="chat left hidden">You became important to me.</div>
-<div class="chat right hidden">In a simple and peaceful way 💙</div>
+<div class="chat right hidden">Beach… memories… together 🌊</div>
+
+<div class="chat left hidden">You became important to me…</div>
+<div class="chat right hidden">In a simple way 💙</div>
 
 <div class="chat left hidden">I miss our long calls sometimes…</div>
 <div class="chat right hidden">Even small chats mean a lot ✨</div>
 
+<img src="photo6.jpg" class="story-img">
+
 <div class="chat left hidden">I’m always here for you 😊</div>
 
-<div class="chat right hidden">You + Me = Best memories pending 😄🌊</div>
+<div class="chat right hidden">Waiting to meet you soon…</div>
 
-<div class="chat left hidden">Waiting to meet you soon…</div>
-<div class="chat right hidden">Let’s make it real ✨</div>
+<img src="photo7.jpg" class="story-img">
 
-<div class="chat left hidden">Happy Birthday Darlinggggg 🎂💖</div>
+<div class="chat left hidden">Let’s make those memories real.</div>
 
-<div style="text-align:center; margin-top:40px;">
-<button onclick="showSecret()">😊 Click this if you're smiling</button>
+<div class="chat right hidden">Happy Birthday Darlinggggg 🎂💖</div>
+
+<!-- FINAL QUESTION -->
+
+<div id="questionBox">
+<h2>Did you smile reading this? 😄</h2>
+
+<button onclick="yesClicked()">YES 💖</button> <button id="noBtn" onmouseover="moveNo()">NO 😒</button>
+
+<p id="answerText"></p>
 </div>
 
 </div>
 
-<div id="secretBox">
-<div class="popup-content">
-<h3>Gotcha 😄</h3>
-<p>I knew you would smile… 😊💙</p>
-<button onclick="closeSecret()">Close</button>
-</div>
-</div>
-
-<div id="finalMessage" style="
-padding:120px 20px;
-text-align:center;
-font-size:26px;
-opacity:0;
-transform:translateY(40px);
-transition:2s;
-color:#ff9ad5;
-">
-Some people just become special…  
-without trying. 💙
-</div>
+<!-- CINEMATIC END -->
 
 <div id="cinemaEnding">
 <div class="cinema-text">
@@ -291,46 +245,7 @@ without trying. 💙
 /* MUSIC */
 
 const music=document.getElementById("bgMusic");
-
-document.body.addEventListener("click",()=>{
-music.play();
-},{once:true});
-
-/* HEARTS */
-
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},800);
-
-/* STARS */
-
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let stars=[];
-for(let i=0;i<100;i++){
-stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5});
-}
-
-function drawStars(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-stars.forEach(s=>{
-ctx.beginPath();
-ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-ctx.fillStyle="white";
-ctx.fill();
-});
-requestAnimationFrame(drawStars);
-}
-drawStars();
+document.body.addEventListener("click",()=>{music.play();},{once:true});
 
 /* CHAT ANIMATION */
 
@@ -339,65 +254,51 @@ let i=0;
 
 function showNext(){
 if(i<chats.length){
-
-document.getElementById("typingStatus").innerText="typing...";
-
 setTimeout(()=>{
 chats[i].classList.add("show");
-document.getElementById("typingStatus").innerText="online";
 i++;
-
-let delay=Math.random()*1200+600;
-setTimeout(showNext,delay);
-
-},1000);
-
+setTimeout(showNext,700);
+},500);
+}else{
+document.getElementById("questionBox").style.display="block";
 }
 }
-
 window.onload=showNext;
 
-/* POPUP */
+/* YES */
 
-function showSecret(){
-document.getElementById("secretBox").style.display="flex";
-}
-function closeSecret(){
-document.getElementById("secretBox").style.display="none";
+function yesClicked(){
+document.getElementById("answerText").innerText =
+"I knew it 😄 That smile looks really good on you 💙";
 }
 
-/* FINAL MESSAGE */
+/* NO BUTTON FUN */
+
+function moveNo(){
+let btn=document.getElementById("noBtn");
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"%";
+btn.style.top=Math.random()*80+"%";
+}
+
+/* CINEMATIC END */
 
 window.addEventListener("scroll",()=>{
-const msg=document.getElementById("finalMessage");
-if(msg.getBoundingClientRect().top < window.innerHeight-100){
-msg.classList.add("show");
-}
-});
-
-/* CINEMATIC END + MUSIC FADE */
-
-window.addEventListener("scroll",()=>{
-
 const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
 
 if(bottom){
-
 document.getElementById("cinemaEnding").classList.add("show");
 
-/* MUSIC FADE OUT */
-
-let fade = setInterval(()=>{
-if(music.volume > 0.05){
-music.volume -= 0.05;
+/* MUSIC FADE */
+let fade=setInterval(()=>{
+if(music.volume>0.05){
+music.volume-=0.05;
 }else{
-music.volume = 0;
+music.volume=0;
 clearInterval(fade);
 }
 },200);
-
 }
-
 });
 
 </script>
