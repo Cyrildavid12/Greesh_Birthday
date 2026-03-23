@@ -14,24 +14,13 @@ color:white;
 overflow-x:hidden;
 }
 
-/* OVERLAY */
 body::before{
 content:"";
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.6);
 z-index:-1;
-}
-
-/* TITLE */
-.title{
-text-align:center;
-font-size:32px;
-margin-top:40px;
-color:#ff7ac8;
 }
 
 /* CHAT */
@@ -43,11 +32,11 @@ margin:auto;
 }
 
 .chat{
-background:rgba(255,255,255,0.1);
-padding:15px 20px;
-border-radius:20px;
-margin:15px 0;
-max-width:80%;
+padding:12px 16px;
+border-radius:18px;
+margin:12px 0;
+max-width:70%;
+background:rgba(255,255,255,0.12);
 }
 
 .left{margin-right:auto;}
@@ -64,31 +53,19 @@ transform:translateY(20px);
 .show{
 opacity:1;
 transform:translateY(0);
-transition:0.5s ease;
+transition:0.5s;
 }
 
-/* IMAGE */
+/* IMAGE AS CHAT */
 
-.story-img{
-width:100%;
-border-radius:20px;
-margin:20px 0;
-object-fit:cover;
+.chat-img{
+max-width:220px;
+border-radius:15px;
+margin:10px 0;
+display:block;
 }
 
-/* BUTTON */
-
-button{
-padding:10px 20px;
-border:none;
-border-radius:10px;
-background:#ff4fa0;
-color:white;
-cursor:pointer;
-margin:10px;
-}
-
-/* FINAL QUESTION */
+/* QUESTION */
 
 #questionBox{
 display:none;
@@ -96,13 +73,7 @@ text-align:center;
 margin-top:80px;
 }
 
-#answerText{
-margin-top:20px;
-font-size:18px;
-color:#ffd6f0;
-}
-
-/* CINEMATIC END */
+/* CINEMA */
 
 #cinemaEnding{
 position:fixed;
@@ -112,22 +83,14 @@ width:100%;
 height:100%;
 background:rgba(0,0,0,0.95);
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 opacity:0;
 pointer-events:none;
-transition:2s;
+transition:1.5s;
 z-index:5000;
-}
-
-.cinema-text{
-color:white;
-font-size:28px;
-line-height:1.8;
-opacity:0;
-transform:scale(0.9);
-transition:2s;
 }
 
 #cinemaEnding.show{
@@ -135,10 +98,31 @@ opacity:1;
 pointer-events:auto;
 }
 
-#cinemaEnding.show .cinema-text{
-opacity:1;
-transform:scale(1);
-text-shadow:0 0 10px #ff4fa0, 0 0 25px #ff4fa0;
+.cinema-text{
+font-size:26px;
+line-height:1.8;
+text-shadow:0 0 15px #ff4fa0;
+}
+
+/* CLOSE BUTTON */
+
+.closeBtn{
+position:absolute;
+top:20px;
+right:25px;
+font-size:28px;
+cursor:pointer;
+color:white;
+}
+
+button{
+padding:10px 18px;
+border:none;
+border-radius:8px;
+background:#ff4fa0;
+color:white;
+cursor:pointer;
+margin:10px;
 }
 
 </style>
@@ -151,128 +135,115 @@ text-shadow:0 0 10px #ff4fa0, 0 0 25px #ff4fa0;
 <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
-<h1 class="title">A Story I Never Planned 💫</h1>
-
-<div style="text-align:center; font-size:14px; color:#aaa;">
-● online <br>
-<span id="typingStatus">typing...</span>
-</div>
-
 <div class="section">
 
 <div class="chat left hidden">It all started as just another workshop...</div>
 <div class="chat right hidden">5 days… nothing special.</div>
-<div class="chat left hidden">Then we spoke… just a little.</div>
 
-<img src="photo1.jpg" class="story-img">
+<div class="chat left hidden">Then we spoke…</div>
+
+<img src="photo1.jpg" class="chat-img left hidden">
 
 <div class="chat right hidden">And that night… you sent me a request 💙</div>
 
-<img src="photo3.jpg" class="story-img">
+<img src="photo3.jpg" class="chat-img right hidden">
 
 <div class="chat left hidden">Then chats… calls…</div>
+
 <div class="chat right hidden">You became part of my day.</div>
 
 <div class="chat left hidden">I brought something from Hyderabad…</div>
 
-<img src="photo2.jpg" class="story-img">
+<img src="photo2.jpg" class="chat-img left hidden">
 
-<div class="chat right hidden">Yeah… those bangles were from me 😄</div>
+<div class="chat right hidden">Yeah… bangles 😄</div>
 
-<div class="chat left hidden">And those dresses… surprise 😉</div>
+<div class="chat left hidden">And dresses… surprise 😉</div>
 
-<img src="photo4.jpg" class="story-img">
+<img src="photo4.jpg" class="chat-img right hidden">
 
-<div class="chat right hidden">Sometimes late replies… sometimes dry…</div>
+<div class="chat right hidden">Sometimes late replies…</div>
 <div class="chat left hidden">Still… I wait.</div>
 
-<img src="photo5.jpg" class="story-img">
+<img src="photo5.jpg" class="chat-img left hidden">
 
-<div class="chat right hidden">Because talking to you feels different.</div>
+<div class="chat right hidden">Talking to you feels different.</div>
 
-<div class="chat left hidden">I promised something…</div>
+<img src="photo9.jpg" class="chat-img right hidden">
 
-<img src="photo9.jpg" class="story-img">
+<div class="chat left hidden">Beach… memories… 🌊</div>
 
-<div class="chat right hidden">Beach… memories… together 🌊</div>
+<div class="chat right hidden">You became important 💙</div>
 
-<div class="chat left hidden">You became important to me…</div>
-<div class="chat right hidden">In a simple way 💙</div>
+<img src="photo6.jpg" class="chat-img left hidden">
 
-<div class="chat left hidden">I miss our long calls sometimes…</div>
-<div class="chat right hidden">Even small chats mean a lot ✨</div>
+<div class="chat left hidden">I’m always here 😊</div>
 
-<img src="photo6.jpg" class="story-img">
+<img src="photo7.jpg" class="chat-img right hidden">
 
-<div class="chat left hidden">I’m always here for you 😊</div>
+<div class="chat right hidden">Happy Birthday Darling 🎂💖</div>
 
-<div class="chat right hidden">Waiting to meet you soon…</div>
-
-<img src="photo7.jpg" class="story-img">
-
-<div class="chat left hidden">Let’s make those memories real.</div>
-
-<div class="chat right hidden">Happy Birthday Darlinggggg 🎂💖</div>
-
-<!-- FINAL QUESTION -->
+<!-- QUESTION -->
 
 <div id="questionBox">
 <h2>Did you smile reading this? 😄</h2>
-
-<button onclick="yesClicked()">YES 💖</button> <button id="noBtn" onmouseover="moveNo()">NO 😒</button>
-
+<button onclick="yesClicked()">YES 💖</button>
+<button id="noBtn" onmouseover="moveNo()">NO 😒</button>
 <p id="answerText"></p>
 </div>
 
 </div>
 
-<!-- CINEMATIC END -->
+<!-- CINEMA -->
 
 <div id="cinemaEnding">
+<div class="closeBtn" onclick="closeCinema()">✖</div>
+
 <div class="cinema-text">
 <p>Some stories start unexpectedly…</p>
 <p>and somehow become important.</p>
 <br>
 <p>Ours is one of them.</p>
 <br>
-<p>Let’s not rush it…</p>
-<p>let’s just enjoy it. 💙</p>
+<p>Let’s just enjoy it 💙</p>
 </div>
+
 </div>
 
 <script>
 
-/* MUSIC */
+/* MUSIC FIX */
 
 const music=document.getElementById("bgMusic");
-document.body.addEventListener("click",()=>{music.play();},{once:true});
+
+document.addEventListener("click",()=>{
+music.play().catch(()=>{});
+},{once:true});
 
 /* CHAT ANIMATION */
 
-const chats=document.querySelectorAll('.chat');
+const items=document.querySelectorAll('.hidden');
 let i=0;
 
 function showNext(){
-if(i<chats.length){
+if(i<items.length){
 setTimeout(()=>{
-chats[i].classList.add("show");
+items[i].classList.add("show");
 i++;
-setTimeout(showNext,700);
-},500);
+setTimeout(showNext,600);
+},400);
 }else{
 document.getElementById("questionBox").style.display="block";
 }
 }
 window.onload=showNext;
 
-/* YES */
+/* BUTTONS */
 
 function yesClicked(){
 document.getElementById("answerText").innerText =
-"I knew it 😄 That smile looks really good on you 💙";
+"I knew it 😄💙";
 }
-
-/* NO BUTTON FUN */
 
 function moveNo(){
 let btn=document.getElementById("noBtn");
@@ -281,25 +252,17 @@ btn.style.left=Math.random()*80+"%";
 btn.style.top=Math.random()*80+"%";
 }
 
-/* CINEMATIC END */
+/* CINEMA */
 
 window.addEventListener("scroll",()=>{
-const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
-
-if(bottom){
+if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 50){
 document.getElementById("cinemaEnding").classList.add("show");
-
-/* MUSIC FADE */
-let fade=setInterval(()=>{
-if(music.volume>0.05){
-music.volume-=0.05;
-}else{
-music.volume=0;
-clearInterval(fade);
-}
-},200);
 }
 });
+
+function closeCinema(){
+document.getElementById("cinemaEnding").classList.remove("show");
+}
 
 </script>
 
