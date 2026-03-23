@@ -21,8 +21,17 @@ left:0;
 z-index:-1;
 }
 
+.title{
+text-align:center;
+font-size:32px;
+margin-top:40px;
+color:#ff7ac8;
+}
+
+/* CHAT */
+
 .section{
-padding:80px 20px;
+padding:60px 20px;
 max-width:700px;
 margin:auto;
 }
@@ -33,7 +42,6 @@ padding:15px 20px;
 border-radius:20px;
 margin:15px 0;
 max-width:80%;
-animation:fadeIn 1.5s ease;
 }
 
 .left{
@@ -46,6 +54,21 @@ margin-left:auto;
 background:#ff4fa0;
 }
 
+/* HIDDEN CHAT */
+
+.hidden{
+opacity:0;
+transform:translateY(20px);
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+transition:1s;
+}
+
+/* IMAGE */
+
 .story-img{
 width:100%;
 border-radius:20px;
@@ -55,21 +78,11 @@ transform:scale(0.9);
 animation:fadeZoom 2s forwards;
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
-}
-
 @keyframes fadeZoom{
 to{opacity:1;transform:scale(1);}
 }
 
-.title{
-text-align:center;
-font-size:32px;
-margin-top:40px;
-color:#ff7ac8;
-}
+/* HEART */
 
 .heart{
 position:fixed;
@@ -79,11 +92,10 @@ animation:floatUp 6s linear infinite;
 }
 
 @keyframes floatUp{
-to{
-transform:translateY(-100vh);
-opacity:0;
+to{transform:translateY(-100vh);opacity:0;}
 }
-}
+
+/* BUTTON */
 
 button{
 padding:10px 20px;
@@ -91,7 +103,6 @@ border:none;
 border-radius:10px;
 background:#ff4fa0;
 color:white;
-font-size:16px;
 cursor:pointer;
 }
 
@@ -119,6 +130,14 @@ max-width:300px;
 text-align:center;
 }
 
+/* FINAL MESSAGE */
+
+#finalMessage.show{
+opacity:1;
+transform:translateY(0);
+text-shadow:0 0 10px #ff4fa0, 0 0 20px #ff4fa0;
+}
+
 </style>
 
 </head>
@@ -133,127 +152,78 @@ text-align:center;
 
 <h1 class="title">A Story I Never Planned 💫</h1>
 
+<!-- STATUS -->
+
+<div style="text-align:center; font-size:14px; color:#aaa;">
+● online <br>
+<span id="typingStatus">typing...</span>
+</div>
+
 <div class="section">
 
-<div class="chat left">
-It all started as just another workshop...
-</div>
+<!-- STORY -->
 
-<div class="chat right">
-5 days… just training students… nothing special.
-</div>
-
-<div class="chat left">
-And then… on the last day… we spoke a little.
-</div>
+<div class="chat left hidden">It all started as just another workshop...</div>
+<div class="chat right hidden">5 days… just training students… nothing special.</div>
+<div class="chat left hidden">And then… on the last day… we spoke a little.</div>
 
 <img src="photo1.jpg" class="story-img">
 
-<div class="chat right">
-I didn’t think much about it that time.
-</div>
-
-<div class="chat left">
-But that night… something unexpected happened…
-</div>
-
-<div class="chat right">
-You found me… and sent me a request 💙
-</div>
+<div class="chat right hidden">I didn’t think much about it that time.</div>
+<div class="chat left hidden">But that night… something unexpected happened…</div>
+<div class="chat right hidden">You found me… and sent me a request 💙</div>
 
 <img src="photo2.jpg" class="story-img">
 
-<div class="chat left">
-From there… it slowly became daily chats…
-</div>
-
-<div class="chat right">
-Then calls…
-</div>
-
-<div class="chat left">
-Then… you became a part of my everyday.
-</div>
+<div class="chat left hidden">From there… it slowly became daily chats…</div>
+<div class="chat right hidden">Then calls…</div>
+<div class="chat left hidden">Then… you became a part of my everyday.</div>
 
 <img src="photo3.jpg" class="story-img">
 
-<div class="chat right">
-I even brought bangles from Hyderabad…
-Packed them… and sent them to you 💖
-</div>
+<div class="chat right hidden">I even brought bangles from Hyderabad…</div>
+<div class="chat left hidden">And those dresses… you still don’t know it was me 😄</div>
 
-<div class="chat left">
-And those dresses…
-Yeah… you still don’t know it was me 😄
-</div>
+<div class="chat right hidden">Sometimes you reply late… sometimes dry…</div>
+<div class="chat left hidden">But still… I wait.</div>
 
-<div class="chat right">
-Sometimes you reply late…
-Sometimes dry…
-</div>
-
-<div class="chat left">
-But still… I wait.
-</div>
-
-<div class="chat right">
-Because talking to you…
-just feels different.
-</div>
+<div class="chat right hidden">Because talking to you just feels different.</div>
 
 <img src="photo4.jpg" class="story-img">
 
-<div class="chat left">
-One day…
-I promised something…
-</div>
+<div class="chat left hidden">I promised something…</div>
+<div class="chat right hidden">That I’ll take you to my hometown…</div>
+<div class="chat left hidden">Show you the beach…</div>
+<div class="chat right hidden">And create the best memories 🌊</div>
 
-<div class="chat right">
-That I’ll take you to my hometown…
-</div>
+<!-- YOUR FEELING PART -->
 
-<div class="chat left">
-Show you the beach…
-</div>
+<div class="chat left hidden">Hey…</div>
+<div class="chat right hidden">I don’t usually say this… but you should know 😊</div>
 
-<div class="chat right">
-And create the best memories 🌊
-</div>
+<div class="chat left hidden">Somewhere between chats and calls… you became important to me.</div>
+<div class="chat right hidden">Not complicated… just simple and peaceful 💙</div>
 
-<div class="chat left">
-I don’t know how to explain this…
-</div>
+<div class="chat left hidden">I miss those long calls sometimes…</div>
+<div class="chat right hidden">Even our random chats mean a lot ✨</div>
 
-<div class="chat right">
-But talking to you became one of my favorite parts of the day 😊
-</div>
+<div class="chat left hidden">And yeah…</div>
+<div class="chat right hidden">I’m always here for you 😊</div>
 
-<div class="chat left">
-Even your random messages…
-</div>
+<div class="chat left hidden">You + Me = Best memories pending 😄🌊</div>
 
-<div class="chat right">
-…they somehow make my day better ✨
-</div>
+<div class="chat right hidden">Waiting to meet you soon… maybe at your college again ✨</div>
 
-<div class="chat left">
-And yeah…
-</div>
+<div class="chat left hidden">Let’s go out and make it real.</div>
 
-<div class="chat right">
-I’m really glad that I met you 💙
-</div>
+<div class="chat right hidden">I really like this bond 💙</div>
 
-<div class="chat left">
-Let’s create those beach memories soon 🌊
-</div>
+<div class="chat left hidden">Happy Birthday Darlinggggg 🎂💖</div>
+<div class="chat right hidden">(Yeah… only you 😄)</div>
 
-<div class="chat right">
-Until then…
-just keep smiling 😊
-</div>
+<div class="chat left hidden">And hey… I miss you 😊</div>
 
-<!-- FUN BUTTON -->
+<!-- BUTTON -->
 
 <div style="text-align:center; margin-top:40px;">
 <button onclick="showSecret()">😊 Click this if you're smiling</button>
@@ -265,42 +235,50 @@ just keep smiling 😊
 
 <div id="secretBox">
 <div class="popup-content">
-
 <h3>Gotcha 😄</h3>
-
-<p>
-I knew you would smile…  
-And yeah…  
-That smile looks good on you 😊💙
-</p>
-
+<p>I knew you would smile… 😊💙</p>
 <button onclick="closeSecret()">Close</button>
-
 </div>
+</div>
+
+<!-- FINAL MESSAGE -->
+
+<div id="finalMessage" style="
+padding:120px 20px;
+text-align:center;
+font-size:26px;
+opacity:0;
+transform:translateY(40px);
+transition:2s;
+color:#ff9ad5;
+">
+
+Some people just become special…
+without trying. 💙
+
 </div>
 
 <script>
 
 /* MUSIC */
 
-const music = document.getElementById("bgMusic");
-
-document.body.addEventListener("click", function(){
+const music=document.getElementById("bgMusic");
+document.body.addEventListener("click",()=>{
 music.play();
-}, {once:true});
+},{once:true});
 
-/* FLOATING HEARTS */
+/* HEARTS */
 
 setInterval(()=>{
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
 },800);
 
-/* STAR BACKGROUND */
+/* STARS */
 
 const canvas=document.getElementById("stars");
 const ctx=canvas.getContext("2d");
@@ -309,39 +287,61 @@ canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
 let stars=[];
-
 for(let i=0;i<100;i++){
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*1.5
-});
+stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5});
 }
 
 function drawStars(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
 stars.forEach(s=>{
 ctx.beginPath();
 ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
 ctx.fillStyle="white";
 ctx.fill();
 });
-
 requestAnimationFrame(drawStars);
 }
-
 drawStars();
 
-/* SECRET POPUP */
+/* CHAT ANIMATION */
+
+const chats=document.querySelectorAll('.chat');
+let i=0;
+
+function showNext(){
+if(i<chats.length){
+
+document.getElementById("typingStatus").innerText="typing...";
+
+setTimeout(()=>{
+chats[i].classList.add("show");
+document.getElementById("typingStatus").innerText="online";
+i++;
+setTimeout(showNext,1200);
+},1000);
+
+}
+}
+
+window.onload=showNext;
+
+/* POPUP */
 
 function showSecret(){
 document.getElementById("secretBox").style.display="flex";
 }
-
 function closeSecret(){
 document.getElementById("secretBox").style.display="none";
 }
+
+/* FINAL MESSAGE */
+
+window.addEventListener("scroll",()=>{
+const msg=document.getElementById("finalMessage");
+if(msg.getBoundingClientRect().top < window.innerHeight-100){
+msg.classList.add("show");
+}
+});
 
 </script>
 
