@@ -11,7 +11,6 @@ margin:0;
 font-family:'Segoe UI',sans-serif;
 background:url("photo8.jpg") center/cover fixed;
 color:white;
-overflow-x:hidden;
 }
 
 body::before{
@@ -35,7 +34,7 @@ margin:auto;
 padding:12px 16px;
 border-radius:18px;
 margin:12px 0;
-max-width:70%;
+max-width:75%;
 background:rgba(255,255,255,0.12);
 }
 
@@ -53,16 +52,28 @@ transform:translateY(20px);
 .show{
 opacity:1;
 transform:translateY(0);
-transition:0.5s;
+transition:0.6s;
 }
 
-/* IMAGE AS CHAT */
+/* IMAGE CHAT */
 
 .chat-img{
-max-width:220px;
+max-width:230px;
 border-radius:15px;
 margin:10px 0;
 display:block;
+}
+
+/* BUTTON */
+
+button{
+padding:10px 18px;
+border:none;
+border-radius:8px;
+background:#ff4fa0;
+color:white;
+cursor:pointer;
+margin:10px;
 }
 
 /* QUESTION */
@@ -71,6 +82,10 @@ display:block;
 display:none;
 text-align:center;
 margin-top:80px;
+}
+
+#answerText{
+margin-top:20px;
 }
 
 /* CINEMA */
@@ -86,7 +101,6 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-text-align:center;
 opacity:0;
 pointer-events:none;
 transition:1.5s;
@@ -98,31 +112,18 @@ opacity:1;
 pointer-events:auto;
 }
 
-.cinema-text{
-font-size:26px;
-line-height:1.8;
-text-shadow:0 0 15px #ff4fa0;
-}
-
-/* CLOSE BUTTON */
-
 .closeBtn{
 position:absolute;
 top:20px;
 right:25px;
 font-size:28px;
 cursor:pointer;
-color:white;
 }
 
-button{
-padding:10px 18px;
-border:none;
-border-radius:8px;
-background:#ff4fa0;
-color:white;
-cursor:pointer;
-margin:10px;
+.cinema-text{
+font-size:26px;
+text-align:center;
+line-height:1.8;
 }
 
 </style>
@@ -137,51 +138,104 @@ margin:10px;
 
 <div class="section">
 
-<div class="chat left hidden">It all started as just another workshop...</div>
-<div class="chat right hidden">5 days… nothing special.</div>
+<!-- STORY START -->
 
-<div class="chat left hidden">Then we spoke…</div>
+<div class="chat left hidden">It all started as just another workshop...</div>
+<div class="chat right hidden">5 days… just normal… nothing special</div>
+
+<div class="chat left hidden">But still… I remember the last day.</div>
 
 <img src="photo1.jpg" class="chat-img left hidden">
 
-<div class="chat right hidden">And that night… you sent me a request 💙</div>
+<div class="chat right hidden">We spoke… just a little…</div>
+<div class="chat left hidden">It didn’t feel important at that time.</div>
+
+<div class="chat right hidden">But that night… something unexpected happened.</div>
+<div class="chat left hidden">You found me… and sent me a request on instagram the beginning of our journey 💙</div>
 
 <img src="photo3.jpg" class="chat-img right hidden">
 
-<div class="chat left hidden">Then chats… calls…</div>
+<div class="chat left hidden">From there… slowly chats started…</div>
+<div class="chat right hidden">Then calls… long calls…</div>
 
-<div class="chat right hidden">You became part of my day.</div>
+<div class="chat left hidden">And somehow… you became part of my routine.</div>
 
-<div class="chat left hidden">I brought something from Hyderabad…</div>
+<div class="chat right hidden">Talking to you became normal… but special.</div>
+
+<div class="chat left hidden">I even went to Hyderabad…</div>
+
+<div class="chat right hidden">I serached and took minimum 50 photos and went for many shops</div>
+
+<div class="chat left hidden">i think i go the bangles which you liked</div>
 
 <img src="photo2.jpg" class="chat-img left hidden">
 
-<div class="chat right hidden">Yeah… bangles 😄</div>
+<div class="chat right hidden">Yeah… those bangles… that was me 😄</div>
 
-<div class="chat left hidden">And dresses… surprise 😉</div>
+<div class="chat left hidden">And those dresses… I didn’t tell you… im still worring about the sizes heheee</div>
+<div class="chat right hidden">But yeah… that was also me.</div>
 
 <img src="photo4.jpg" class="chat-img right hidden">
 
-<div class="chat right hidden">Sometimes late replies…</div>
-<div class="chat left hidden">Still… I wait.</div>
+<div class="chat left hidden">Sometimes you reply late…</div>
+<div class="chat right hidden">Sometimes very dry…</div>
+
+<div class="chat left hidden">Still… I wait for your message.</div>
 
 <img src="photo5.jpg" class="chat-img left hidden">
 
-<div class="chat right hidden">Talking to you feels different.</div>
+<div class="chat right hidden">Because honestly…</div>
+<div class="chat left hidden">Talking to you feels different.</div>
+
+<div class="chat right hidden">Not something I can explain easily…</div>
 
 <img src="photo9.jpg" class="chat-img right hidden">
 
-<div class="chat left hidden">Beach… memories… 🌊</div>
+<div class="chat left hidden">You once said… you want to go to the beach…</div>
+<div class="chat right hidden">I still remember that.</div>
 
-<div class="chat right hidden">You became important 💙</div>
+<div class="chat left hidden">One day… I’ll take you there.</div>
+<div class="chat right hidden">And we’ll make those memories real 🌊</div>
+
+<div class="chat left hidden">Somewhere between all this…</div>
+<div class="chat right hidden">You became important to me.</div>
+
+<div class="chat left hidden">Not in a complicated way…</div>
+<div class="chat right hidden">Just simple… and peaceful 💙</div>
 
 <img src="photo6.jpg" class="chat-img left hidden">
 
-<div class="chat left hidden">I’m always here 😊</div>
+<div class="chat left hidden">I miss our long calls sometimes…</div>
+<div class="chat right hidden">And our random chats.</div>
+
+<div class="chat left hidden">Even small conversations…</div>
+<div class="chat right hidden">They mean a lot to me.</div>
+
+<div class="chat left hidden">And yeah…</div>
+<div class="chat right hidden">I’m always here for you 😊</div>
 
 <img src="photo7.jpg" class="chat-img right hidden">
 
-<div class="chat right hidden">Happy Birthday Darling 🎂💖</div>
+<div class="chat left hidden">I promised you something…</div>
+<div class="chat right hidden">To take you out… show you places…</div>
+
+<div class="chat left hidden">We’ll make the best memories… together.</div>
+
+<div class="chat right hidden">Just waiting for that day ✨</div>
+
+<div class="chat left hidden">Happy Birthday Darlinggggg 🎂💖</div>
+
+<div class="chat right hidden">Im very happy that we contiuned our journey from December 5th and now April 5th(5 Months, i dont know why 5 is very coincidence for us</div>
+
+<div class="chat left hidden">You will be in a special place in my heart Darling</div>
+
+<div class="chat right hidden">I wish you many more success and good future( im waiting we work together at one company)</div>
+
+<div class="chat left hidden">im here to do all the tasks and works of your's</div>
+
+<div class="chat right hidden">Big Fan of your EYES, SMILE and your Sweet,sweeter and sweetest VOICE DARLING</div>
+
+<div class="chat left hidden">I LIKE YOU DARLINGEYYYYYYYYYYYYYYYYY</div>
 
 <!-- QUESTION -->
 
@@ -200,23 +254,20 @@ margin:10px;
 <div class="closeBtn" onclick="closeCinema()">✖</div>
 
 <div class="cinema-text">
-<p>Some stories start unexpectedly…</p>
-<p>and somehow become important.</p>
-<br>
-<p>Ours is one of them.</p>
-<br>
-<p>Let’s just enjoy it 💙</p>
+Some stories start unexpectedly…<br>
+and somehow become important.<br><br>
+Ours is one of them.<br><br>
+Let’s just enjoy it 💙
 </div>
-
 </div>
 
 <script>
 
-/* MUSIC FIX */
+/* MUSIC */
 
 const music=document.getElementById("bgMusic");
 
-document.addEventListener("click",()=>{
+document.body.addEventListener("click",()=>{
 music.play().catch(()=>{});
 },{once:true});
 
@@ -230,19 +281,20 @@ if(i<items.length){
 setTimeout(()=>{
 items[i].classList.add("show");
 i++;
-setTimeout(showNext,600);
-},400);
+setTimeout(showNext,1100); /* slower */
+},700);
 }else{
 document.getElementById("questionBox").style.display="block";
 }
 }
+
 window.onload=showNext;
 
 /* BUTTONS */
 
 function yesClicked(){
 document.getElementById("answerText").innerText =
-"I knew it 😄💙";
+"I knew it 😊💙";
 }
 
 function moveNo(){
