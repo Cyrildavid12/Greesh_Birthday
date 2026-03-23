@@ -6,7 +6,7 @@
 
 <style>
 
-/* (NO CHANGES — your original styles kept) */
+/* YOUR ORIGINAL STYLES (UNCHANGED) */
 
 body{
 margin:0;
@@ -23,6 +23,35 @@ height:100%;
 background:rgba(0,0,0,0.6);
 z-index:-1;
 }
+
+/* 🎬 INTRO SCREEN */
+
+#introScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+z-index:9999;
+transition:2s;
+}
+
+#introScreen.hide{
+opacity:0;
+pointer-events:none;
+}
+
+.cinema-text{
+font-size:26px;
+line-height:1.8;
+}
+
+/* REST SAME */
 
 .section{
 padding:60px 20px;
@@ -82,47 +111,22 @@ margin-top:80px;
 margin-top:20px;
 }
 
-#cinemaEnding{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.95);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-opacity:0;
-pointer-events:none;
-transition:1.5s;
-z-index:5000;
-}
-
-#cinemaEnding.show{
-opacity:1;
-pointer-events:auto;
-}
-
-.closeBtn{
-position:absolute;
-top:20px;
-right:25px;
-font-size:28px;
-cursor:pointer;
-}
-
-.cinema-text{
-font-size:26px;
-text-align:center;
-line-height:1.8;
-}
-
 </style>
 
 </head>
 
 <body>
+
+<!-- 🎬 INTRO FIRST -->
+
+<div id="introScreen">
+<div class="cinema-text">
+Some stories start unexpectedly…<br>
+and somehow become important.<br><br>
+Ours is one of them.<br><br>
+Let’s just enjoy it 💙
+</div>
+</div>
 
 <audio id="bgMusic">
 <source src="audio.mp3" type="audio/mpeg">
@@ -130,7 +134,7 @@ line-height:1.8;
 
 <div class="section">
 
-<!-- YOUR FULL CHAT (UNCHANGED) -->
+<!-- ✅ YOUR FULL CHAT (100% SAME — NOT TOUCHED) -->
 
 <div class="chat left hidden">It all started as just another workshop...</div>
 <div class="chat right hidden">5 days… just normal… nothing special</div>
@@ -229,8 +233,6 @@ line-height:1.8;
 
 <div class="chat left hidden">I LIKE YOU DARLINGEYYYYYYYYYYYYYYYYY</div>
 
-<!-- QUESTION -->
-
 <div id="questionBox">
 <h2>Did you smile reading this? 😄</h2>
 <button onclick="yesClicked()">YES 💖</button>
@@ -240,22 +242,9 @@ line-height:1.8;
 
 </div>
 
-<!-- CINEMA -->
-
-<div id="cinemaEnding">
-<div class="closeBtn" onclick="closeCinema()">✖</div>
-
-<div class="cinema-text">
-Some stories start unexpectedly…<br>
-and somehow become important.<br><br>
-Ours is one of them.<br><br>
-Let’s just enjoy it 💙
-</div>
-</div>
-
 <script>
 
-/* 🎵 MUSIC FIX (FADE-IN + START ON FIRST MESSAGE) */
+/* 🎵 MUSIC FADE-IN */
 
 const music = document.getElementById("bgMusic");
 music.volume = 0;
@@ -272,7 +261,7 @@ clearInterval(fade);
 },200);
 }
 
-/* CHAT ANIMATION */
+/* CHAT */
 
 const items=document.querySelectorAll('.hidden');
 let i=0;
@@ -281,18 +270,9 @@ function showNext(){
 if(i<items.length){
 
 setTimeout(()=>{
-
 items[i].classList.add("show");
-
-/* PLAY MUSIC ON FIRST MESSAGE */
-if(i === 0){
-music.play().catch(()=>{});
-fadeInMusic();
-}
-
 i++;
 setTimeout(showNext,1800);
-
 },1200);
 
 }else{
@@ -300,16 +280,24 @@ document.getElementById("questionBox").style.display="block";
 }
 }
 
-window.onload=showNext;
+/* 🎬 INTRO CONTROL */
 
-/* FALLBACK CLICK */
+window.onload = function(){
 
-document.body.addEventListener("click", ()=>{
-if(music.paused){
+setTimeout(()=>{
+
+document.getElementById("introScreen").classList.add("hide");
+
+/* START MUSIC AFTER INTRO */
 music.play().catch(()=>{});
 fadeInMusic();
-}
-},{once:true});
+
+/* START CHAT */
+showNext();
+
+},10000);
+
+};
 
 /* BUTTONS */
 
@@ -322,18 +310,6 @@ let btn=document.getElementById("noBtn");
 btn.style.position="absolute";
 btn.style.left=Math.random()*80+"%";
 btn.style.top=Math.random()*80+"%";
-}
-
-/* CINEMA */
-
-window.addEventListener("scroll",()=>{
-if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 50){
-document.getElementById("cinemaEnding").classList.add("show");
-}
-});
-
-function closeCinema(){
-document.getElementById("cinemaEnding").classList.remove("show");
 }
 
 </script>
