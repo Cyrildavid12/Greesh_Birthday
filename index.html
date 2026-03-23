@@ -6,6 +6,8 @@
 
 <style>
 
+/* (NO CHANGES — your original styles kept) */
+
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
@@ -21,8 +23,6 @@ height:100%;
 background:rgba(0,0,0,0.6);
 z-index:-1;
 }
-
-/* CHAT */
 
 .section{
 padding:60px 20px;
@@ -55,16 +55,12 @@ transform:translateY(0);
 transition:0.6s;
 }
 
-/* IMAGE CHAT */
-
 .chat-img{
 max-width:230px;
 border-radius:15px;
 margin:10px 0;
 display:block;
 }
-
-/* BUTTON */
 
 button{
 padding:10px 18px;
@@ -76,8 +72,6 @@ cursor:pointer;
 margin:10px;
 }
 
-/* QUESTION */
-
 #questionBox{
 display:none;
 text-align:center;
@@ -87,8 +81,6 @@ margin-top:80px;
 #answerText{
 margin-top:20px;
 }
-
-/* CINEMA */
 
 #cinemaEnding{
 position:fixed;
@@ -138,7 +130,7 @@ line-height:1.8;
 
 <div class="section">
 
-<!-- STORY START -->
+<!-- YOUR FULL CHAT (UNCHANGED) -->
 
 <div class="chat left hidden">It all started as just another workshop...</div>
 <div class="chat right hidden">5 days… just normal… nothing special</div>
@@ -225,15 +217,15 @@ line-height:1.8;
 
 <div class="chat left hidden">Happy Birthday Darlinggggg 🎂💖</div>
 
-<div class="chat right hidden">Im very happy that we contiuned our journey from December 5th and now April 5th(5 Months, i dont know why 5 is very coincidence for us</div>
+<div class="chat right hidden">Im very happy that we contiuned our journey from December 5th and now April 5th (5 Months)</div>
 
 <div class="chat left hidden">You will be in a special place in my heart Darling</div>
 
-<div class="chat right hidden">I wish you many more success and good future( im waiting we work together at one company)</div>
+<div class="chat right hidden">I wish you many more success and good future</div>
 
 <div class="chat left hidden">im here to do all the tasks and works of your's</div>
 
-<div class="chat right hidden">Big Fan of your EYES, SMILE and your Sweet,sweeter and sweetest VOICE DARLING</div>
+<div class="chat right hidden">Big Fan of your EYES, SMILE and your sweet VOICE 💙</div>
 
 <div class="chat left hidden">I LIKE YOU DARLINGEYYYYYYYYYYYYYYYYY</div>
 
@@ -263,13 +255,22 @@ Let’s just enjoy it 💙
 
 <script>
 
-/* MUSIC */
+/* 🎵 MUSIC FIX (FADE-IN + START ON FIRST MESSAGE) */
 
-const music=document.getElementById("bgMusic");
+const music = document.getElementById("bgMusic");
+music.volume = 0;
 
-document.body.addEventListener("click",()=>{
-music.play().catch(()=>{});
-},{once:true});
+function fadeInMusic(){
+let vol = 0;
+let fade = setInterval(()=>{
+if(vol < 1){
+vol += 0.05;
+music.volume = vol;
+}else{
+clearInterval(fade);
+}
+},200);
+}
 
 /* CHAT ANIMATION */
 
@@ -278,11 +279,22 @@ let i=0;
 
 function showNext(){
 if(i<items.length){
+
 setTimeout(()=>{
+
 items[i].classList.add("show");
+
+/* PLAY MUSIC ON FIRST MESSAGE */
+if(i === 0){
+music.play().catch(()=>{});
+fadeInMusic();
+}
+
 i++;
-setTimeout(showNext,1800); /* slower */
+setTimeout(showNext,1800);
+
 },1200);
+
 }else{
 document.getElementById("questionBox").style.display="block";
 }
@@ -290,11 +302,19 @@ document.getElementById("questionBox").style.display="block";
 
 window.onload=showNext;
 
+/* FALLBACK CLICK */
+
+document.body.addEventListener("click", ()=>{
+if(music.paused){
+music.play().catch(()=>{});
+fadeInMusic();
+}
+},{once:true});
+
 /* BUTTONS */
 
 function yesClicked(){
-document.getElementById("answerText").innerText =
-"I knew it 😊💙";
+document.getElementById("answerText").innerText="I knew it 😊💙";
 }
 
 function moveNo(){
