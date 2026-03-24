@@ -125,8 +125,9 @@ Let’s just enjoy it 💙
 </div>
 </div>
 
-<!-- 🎵 MUSIC (FIXED) -->
-<audio id="bgMusic" autoplay muted loop>
+<!-- 🎵 MUSIC (ONLY CHANGED PART) -->
+
+<audio id="bgMusic">
 <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
@@ -266,14 +267,9 @@ document.getElementById("questionBox").style.display="block";
 }
 }
 
-/* 🎬 INTRO + 🎵 MUSIC FIX */
+/* 🎬 INTRO CONTROL */
 
 window.onload = function(){
-
-// unmute after autoplay starts
-setTimeout(()=>{
-document.getElementById("bgMusic").muted = false;
-},200);
 
 setTimeout(()=>{
 document.getElementById("introScreen").classList.add("hide");
@@ -281,6 +277,14 @@ showNext();
 },10000);
 
 };
+
+/* 🎵 MUSIC (ONLY ADDED) */
+
+const music = document.getElementById("bgMusic");
+
+document.body.addEventListener("click", function(){
+music.play();
+}, { once: true });
 
 /* BUTTONS */
 
