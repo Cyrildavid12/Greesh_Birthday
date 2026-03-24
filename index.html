@@ -269,23 +269,7 @@ document.getElementById("questionBox").style.display="block";
 }
 }
 
-/* 🎬 INTRO CONTROL + 🎵 MUSIC FIX */
 
-window.onload = function(){
-
-const music = document.getElementById("bgMusic");
-
-// autoplay fix (unmute after start)
-setTimeout(()=>{
-music.muted = false;
-},300);
-
-setTimeout(()=>{
-document.getElementById("introScreen").classList.add("hide");
-showNext();
-},10000);
-
-};
 
 /* BUTTONS */
 
