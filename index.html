@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 <title>For Someone Special 💙</title>
@@ -126,15 +125,13 @@ Let’s just enjoy it 💙
 </div>
 </div>
 
-<!-- 🎵 MUSIC (UNCHANGED) -->
+<!-- 🎵 MUSIC -->
 
 <audio id="bgMusic">
 <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
 <div class="section">
-
-<!-- YOUR FULL CHAT (UNCHANGED) -->
 
 <div class="chat left hidden">It all started as just another workshop...</div>
 <div class="chat right hidden">5 days… just normal… nothing special</div>
@@ -169,9 +166,12 @@ Let’s just enjoy it 💙
 <div class="chat right hidden">Yeah… those bangles… that was me 😄</div>
 
 <div class="chat left hidden">And those dresses… I didn’t tell you… im still worring about the sizes heheee</div>
-<div class="chat right hidden">But yeah… that was also me.</div>
 
-<img src="photo4.jpg" class="chat-img right hidden">
+<img src="photo11.jpg" class="chat-img right hidden">
+  
+<div class="chat left hidden">But yeah… that was also me.</div>
+
+<img src="photo12.jpg" class="chat-img right hidden">
 
 <div class="chat left hidden">Sometimes you reply late…</div>
 <div class="chat right hidden">Sometimes very dry…</div>
@@ -224,7 +224,9 @@ Let’s just enjoy it 💙
 <div class="chat right hidden">Im very happy that we contiuned our journey from December 5th and now April 5th (5 Months)</div>
 
 <div class="chat left hidden">You will be in a special place in my heart Darling</div>
-
+  
+<img src="photo10.jpg" class="chat-img left hidden">
+  
 <div class="chat right hidden">I wish you many more success and good future</div>
 
 <div class="chat left hidden">im here to do all the tasks and works of your's</div>
@@ -263,20 +265,25 @@ document.getElementById("questionBox").style.display="block";
 }
 }
 
-/* 🎬 INTRO CONTROL */
+/* 🎬 INTRO CONTROL + 🎵 MUSIC */
 
 window.onload = function(){
 
+// 🎵 PLAY MUSIC WHEN INTRO STARTS
+document.getElementById("bgMusic").play();
+
 setTimeout(()=>{
-
 document.getElementById("introScreen").classList.add("hide");
-
-/* START CHAT AFTER INTRO */
 showNext();
-
 },10000);
 
 };
+
+/* 🛑 STOP MUSIC WHEN EXIT */
+
+window.addEventListener("beforeunload", function () {
+document.getElementById("bgMusic").pause();
+});
 
 /* BUTTONS */
 
