@@ -48,7 +48,7 @@ font-size:26px;
 line-height:1.8;
 }
 
-/* YOUR ORIGINAL STYLES */
+/* SECTION */
 
 .section{
 padding:60px 20px;
@@ -56,23 +56,48 @@ max-width:700px;
 margin:auto;
 }
 
+/* 💬 CHAT FIXED */
+
 .chat{
 padding:12px 16px;
 border-radius:18px;
 margin:12px 0;
 max-width:75%;
-background:rgba(255,255,255,0.12);
+background:none;
 }
 
-.left{
+/* LEFT TEXT */
+.chat.left{
 margin-right:auto;
 background:#a855f7;
 color:white;
 }
-.right{
+
+/* RIGHT TEXT */
+.chat.right{
 margin-left:auto;
 background:#ff4fa0;
+color:white;
 }
+
+/* 🖼️ IMAGES */
+
+.chat-img{
+max-width:230px;
+border-radius:15px;
+margin:10px 0;
+display:block;
+}
+
+.chat-img.left{
+margin-right:auto;
+}
+
+.chat-img.right{
+margin-left:auto;
+}
+
+/* ANIMATION */
 
 .hidden{
 opacity:0;
@@ -85,16 +110,7 @@ transform:translateY(0);
 transition:0.6s;
 }
 
-.chat-img{
-max-width:230px;
-border-radius:15px;
-margin:10px 0;
-display:block;
-}
-.chat-img.right{
-margin-left:auto;
-margin-right:0;
-}
+/* BUTTON */
 
 button{
 padding:10px 18px;
@@ -122,7 +138,7 @@ margin-top:20px;
 
 <body>
 
-<!-- 🎬 INTRO FIRST -->
+<!-- 🎬 INTRO -->
 
 <div id="introScreen">
 <div class="cinema-text">
@@ -133,7 +149,7 @@ Let’s just enjoy it 💙
 </div>
 </div>
 
-<!-- 🎵 MUSIC (ONLY CHANGED PART) -->
+<!-- 🎵 MUSIC (UNCHANGED) -->
 
 <audio id="bgMusic">
 <source src="audio.mp3" type="audio/mpeg">
@@ -141,7 +157,7 @@ Let’s just enjoy it 💙
 
 <div class="section">
 
-<!-- YOUR CHAT (UNCHANGED) -->
+<!-- 💬 CHAT (UNCHANGED) -->
 
 <div class="chat left hidden">It all started as just another workshop...</div>
 <div class="chat right hidden">5 days… just normal… nothing special</div>
@@ -245,13 +261,13 @@ Let’s just enjoy it 💙
 
 <div class="chat left hidden">im here to do all the tasks and works of your's and im here to help you and guide you</div>
 
-<div class="chat right hidden">You are so special and something new human being i met in my total life  💙</div>
+<div class="chat right hidden">You are so special and something new human being i met in my total life 💙</div>
 
 <div class="chat left hidden">i pray and hope our friendship remaninds same and more & more</div>
 
 <div class="chat right hidden">Nothing to say or express of you Greeshuuu</div>
 
-<div class="chat left hidden">I'm very happy and joy that we became so much best,bester and bestest friends, im very excited of our meets how all it will be </div>
+<div class="chat left hidden">I'm very happy and joy that we became so much best,bester and bestest friends</div>
 
 <div class="chat right hidden">Happy happiest Birthday MADAMMMMM Signing OFF, your's Cyri(SIR)</div>
 
@@ -266,37 +282,33 @@ Let’s just enjoy it 💙
 
 <script>
 
-/* CHAT (UNCHANGED) */
+/* CHAT */
 
 const items=document.querySelectorAll('.hidden');
 let i=0;
 
 function showNext(){
 if(i<items.length){
-
 setTimeout(()=>{
 items[i].classList.add("show");
 i++;
 setTimeout(showNext,1800);
 },1200);
-
 }else{
 document.getElementById("questionBox").style.display="block";
 }
 }
 
-/* 🎬 INTRO CONTROL */
+/* INTRO */
 
 window.onload = function(){
-
 setTimeout(()=>{
 document.getElementById("introScreen").classList.add("hide");
 showNext();
 },10000);
-
 };
 
-/* 🎵 MUSIC (ONLY ADDED) */
+/* MUSIC */
 
 const music = document.getElementById("bgMusic");
 
